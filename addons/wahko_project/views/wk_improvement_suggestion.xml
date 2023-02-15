@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="improvement_suggestion_view_form" model="ir.ui.view">
+        <field name="name">improvement_suggestion.view.form</field>
+        <field name="model">improvement.suggestion</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="issue_date" />
+                        <field name="employee_id" />
+                        <field name="employee_email" />
+                        <field name="bu_br_id" />
+                        <field name="department_id" />
+                        <field name="doc_no" />
+
+                        <field name="facilitator_id" />
+                        <field name="facilitator_email" />
+                        <field name="dep_head_id" />
+                        <field name="dep_head_email" />
+
+                        <field name="improvement_them" />
+                        <field name="current_condition" />
+                        <field name="improvement_suggestion" />
+                        
+                        <field name="safety_healthy" />
+                        <field name="quallity" />
+                        <field name="cost_budget" />
+                        <field name="delivery" />
+                        <field name="morality" />
+
+                        <field name="man_people" />
+                        <field name="machine_equipment" />
+                        <field name="method_process" />
+                        <field name="material_parts" />
+                        <field name="environment" />
+                        <field name="information" />
+
+                        <field name="sort" />
+                        <field name="set_in" />
+                        <field name="shine" />
+                        <field name="standardize" />
+                        <field name="sustain" />
+
+                        <field name="improvement_scope" widget="radio" options="{'horizontal':true}"/>
+
+                        <field name="before_improvement" />
+                        <field name="after_improvement" />
+
+                        <field name="deliverables" />
+                        <field name="next_improvement_plan" />
+
+                        <field name="create_by" />
+                        <field name="create_date" />
+                        
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="improvement_suggestion_view_tree" model="ir.ui.view">
+        <field name="name">improvement_suggestion.view.tree</field>
+        <field name="model">improvement.suggestion</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="issue_date" />
+                <field name="employee_id" />
+                <field name="employee_email" />
+                <field name="bu_br_id" />
+                <field name="department_id" />
+                <field name="doc_no" />
+                <field name="improvement_them" />
+            </tree>
+        </field>
+    </record>
+    <record id="improvement_suggestion_view_search" model="ir.ui.view">
+        <field name="name">improvement_suggestion.view.search</field>
+        <field name="model">improvement.suggestion</field>
+        <field name="arch" type="xml">
+            <search string="Improvement Suggestion">
+                <field name="employee_id" />
+                <field name="bu_br_id" />
+                <field name="department_id" />
+                <group expand="0" string="Group By">
+                    <filter name="department_id" string="Department" domain="[]" context="{'group_by': 'department_id'}" />
+                    <filter name="bu_br_id" string="Business Unit" domain="[]" context="{'group_by': 'bu_br_id'}" />
+                </group>
+                
+            </search>
+        </field>
+    </record>
+
+    <record id="improvement_suggestion_action" model="ir.actions.act_window">
+        <field name="name">Improvement Suggestion</field>
+        <field name="res_model">improvement.suggestion</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create your First Improvement Suggestion!</p>
+        </field>
+    </record>
+    <menuitem
+        id="improvement_suggestion_menu"
+        name="Improvement Suggestion" action="improvement_suggestion_action"
+        sequence="10"/>
+    
+</odoo>

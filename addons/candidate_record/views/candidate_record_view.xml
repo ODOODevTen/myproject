@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="candidate_record_view_form" model="ir.ui.view">
+        <field name="name">candidate_record.view.form</field>
+        <field name="model">candidate.record</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="address" />
+                        <field name="age" />
+                        <field name="gender" widget="radio" options="{'horizontal':true}"/>
+                        <field name="education" />
+                        <field name="skill" />
+                        <field name="full_time" widget="boolean_toggle"/>
+                        <field name="marital_status" widget="radio" options="{'horizontal':true}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="candidate_record_view_tree" model="ir.ui.view">
+        <field name="name">candidate_record.view.tree</field>
+        <field name="model">candidate.record</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name" />
+                <field name="address" />
+                <field name="age" />
+                <field name="gender" />
+                <field name="education" />
+                <field name="skill" />
+                <field name="full_time" />
+                <field name="marital_status" />  
+            </tree>
+        </field>
+    </record>
+    <record id="candidate_record_view_search" model="ir.ui.view">
+        <field name="name">candidate_record.view.search</field>
+        <field name="model">candidate.record</field>
+        <field name="arch" type="xml">
+            <search string="Candidate Record">
+                <field name="name"/>
+                <field name="gender" />
+                <field name="marital_status" />
+                <group expand="0" string="Group By">
+                    <filter name="gender" string="Gender" domain="[]" context="{'group_by': 'gender'}" />
+                    <filter name="full_time" string="Full Time" domain="[]" context="{'group_by': 'full_time'}" />
+                    <filter name="marital_status" string="Marital Status" domain="[]" context="{'group_by': 'marital_status'}" />
+                </group>
+                
+            </search>
+        </field>
+    </record>
+
+    <record id="candidate_record_action" model="ir.actions.act_window">
+        <field name="name">Candidate Record</field>
+        <field name="res_model">candidate.record</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create your First Candidate Record!</p>
+        </field>
+    </record>
+    <menuitem
+        id="candidate_record_menu"
+        name="Candidate Record" action="candidate_record_action"
+        sequence="10"/>
+    
+</odoo>
