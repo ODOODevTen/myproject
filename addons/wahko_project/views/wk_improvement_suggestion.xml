@@ -21,68 +21,85 @@
                             IMPROVEMENT SUGGESTION FORM
                         </h1>
                     </div>
-                    <group>
-                        <group string="EMPLOYEE RELATED INFORMATION">
+                    <!-- <group> -->
+                    <group string="EMPLOYEE RELATED INFORMATION">
+                        <group>
                             <field name="doc_no" readonly="1" force_save="1"/>
                             <field name="issue_date" readonly="1" force_save="1"/>
                             <field name="employee_id" required="1"/>
                             <field name="employee_email" />
                             <field name="bu_br_id" />
                             <field name="department_id" />
-                            
-
+                        </group>
+                        <group>
                             <field name="facilitator_id" required="1"/>
                             <field name="facilitator_email" />
                             <field name="dep_head_id" required="1"/>
                             <field name="dep_head_email" />
                         </group>
+                    </group>
+
+                    <group>
                         <field name="improvement_them" />
                         <field name="current_condition" />
                         <field name="improvement_suggestion" />
-                        <group string="CHOOSE THE IMPROVEMENT SUGGESTION OBJECTIVE">
-                            <group string="SQCDM Objective ">
-                                <field name="safety_healthy" />
-                                <field name="quallity" />
-                                <field name="cost_budget" />
-                                <field name="delivery" />
-                                <field name="morality" />
-                            </group>
-                            <group string="4M+EI Objective">
-                                <field name="man_people" />
-                                <field name="machine_equipment" />
-                                <field name="method_process" />
-                                <field name="material_parts" />
-                                <field name="environment" />
-                                <field name="information" />
-                            </group>
-                            <group string="5S Objective">
-                                <field name="sort" />
-                                <field name="set_in" />
-                                <field name="shine" />
-                                <field name="standardize" />
-                                <field name="sustain" />
-                            </group>
-                        </group>
-                        
-
-                        
-
-                        <field name="improvement_scope" widget="radio" options="{'horizontal':true}"/>
-
-                        <field name="before_improvement" />
-                        <field name="after_improvement" />
-
-                        <field name="deliverables" />
-                        <field name="next_improvement_plan" />
-
-                        <field name="create_id" />
-                        <field name="create_date" />
-                        
                     </group>
+                    
+                    <group string="CHOOSE THE IMPROVEMENT SUGGESTION OBJECTIVE">
+                        <group string="SQCDM Objective ">
+                            <field name="safety_healthy" />
+                            <field name="quallity" />
+                            <field name="cost_budget" />
+                            <field name="delivery" />
+                            <field name="morality" />
+                        </group>
+                        <group string="4M+EI Objective">
+                            <field name="man_people" />
+                            <field name="machine_equipment" />
+                            <field name="method_process" />
+                            <field name="material_parts" />
+                            <field name="environment" />
+                            <field name="information" />
+                        </group>
+                        <group string="5S Objective">
+                            <field name="sort" />
+                            <field name="set_in" />
+                            <field name="shine" />
+                            <field name="standardize" />
+                            <field name="sustain" />
+                        </group>  
+                    </group>
+                    <group string="IMPROVEMENT SCOPE">
+                        <field name="improvement_scope" widget="radio" options="{'horizontal':true}"/>
+                    </group>
+                    
+                    <group string="VISUAL CONDITION ">
+                        <group >
+                            <field name="before_improvement" widget="image"/>
+                        </group>
+                        <group >
+                            <field name="after_improvement" widget="image"/>
+                        </group>
+                    </group>
+                    
+                    <group>
+                        <field name="deliverables" />
+                    </group>
+                    <group>
+                        <field name="next_improvement_plan" />
+                    </group>
+                    
+                    <group>
+                        <field name="create_id" readonly="1" force_save="1"/>
+                        <field name="create_date"  readonly="1" force_save="1"/>
+                    </group>
+                           
+                    <!-- </group> -->
                 </sheet>
             </form>
         </field>
     </record>
+
     <record id="improvement_suggestion_view_tree" model="ir.ui.view">
         <field name="name">improvement_suggestion.view.tree</field>
         <field name="model">improvement.suggestion</field>

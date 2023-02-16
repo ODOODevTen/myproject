@@ -1,4 +1,4 @@
-from odoo import _,fields, models
+from odoo import _,fields, models,api
 from datetime import datetime
 class ImprovementSuggestion(models.Model):
     _name = 'improvement.suggestion'
@@ -73,5 +73,11 @@ class ImprovementSuggestion(models.Model):
 
     def action_reject(self):
         self.state = 'reject'
+
+    
+    @api.model
+    def create(self,vals):
+        vals['doc_no'] = self.env['ir.sequence'].next_by_code('improvement.suggestion')
+        return super(ImprovementSuggestion,self).create(vals)
 
 
