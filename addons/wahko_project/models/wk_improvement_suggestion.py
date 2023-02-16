@@ -1,10 +1,10 @@
 from odoo import _,fields, models
-
+from datetime import datetime
 class ImprovementSuggestion(models.Model):
     _name = 'improvement.suggestion'
     _description = 'Improvement Suggestion'
     
-    issue_date = fields.Date(string='Issue Date')
+    issue_date = fields.Date(string='Issue Date',default=datetime.today())
     employee_id = fields.Many2one('hr.employee', string ='Proposed By')
     employee_email = fields.Char(string='Proposed By Email')
     designation = fields.Char(string='Designation')
@@ -54,14 +54,24 @@ class ImprovementSuggestion(models.Model):
     deliverables = fields.Text(string='DELIVERABLES')
     next_improvement_plan = fields.Text(string='NEXT IMPROVEMENT PLAN')
 
-    create_by = fields.Many2one('res.users', string='Create By', default=lambda self:self.env.user)
+    create_id = fields.Many2one('res.users', string='Create By', default=lambda self:self.env.user)
     create_date = fields.Datetime('Create Date', default=lambda self: fields.datetime.now())
 
     state = fields.Selection([
         ('draft','Draft'),
         ('add','Add'),
         ('approve', 'Approved'),
-        ('close','Close')
+        ('close','Close'),
+        ('reject','Rejected')
     ],default='draft', string='State')
+
+    def action_add(self):
+        self.state = 'add'
+
+    def action_approve(self):
+        self.state = 'close'
+
+    def action_reject(self):
+        self.state = 'reject'
 
 

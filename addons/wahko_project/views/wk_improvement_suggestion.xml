@@ -6,42 +6,66 @@
         <field name="model">improvement.suggestion</field>
         <field name="arch" type="xml">
             <form string="">
+                <header>
+                    <button name="action_add" string="Add" type="object" class="oe_highlight"
+                                        attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                    <button name="action_approve" string="Approve" type="object" class="oe_highlight"
+                                        attrs="{'invisible': [('state', '!=', 'add')]}"/>
+                    <button name="action_reject" string="Reject" type="object" class="oe_highlight"
+                                        attrs="{'invisible': [('state', '!=', 'add')]}"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,close"/>
+                </header>
                 <sheet>
+                    <div>
+                        <h1 class="text-center" style="color:#714B67">
+                            IMPROVEMENT SUGGESTION FORM
+                        </h1>
+                    </div>
                     <group>
-                        <field name="issue_date" />
-                        <field name="employee_id" />
-                        <field name="employee_email" />
-                        <field name="bu_br_id" />
-                        <field name="department_id" />
-                        <field name="doc_no" />
+                        <group string="EMPLOYEE RELATED INFORMATION">
+                            <field name="doc_no" readonly="1" force_save="1"/>
+                            <field name="issue_date" readonly="1" force_save="1"/>
+                            <field name="employee_id" required="1"/>
+                            <field name="employee_email" />
+                            <field name="bu_br_id" />
+                            <field name="department_id" />
+                            
 
-                        <field name="facilitator_id" />
-                        <field name="facilitator_email" />
-                        <field name="dep_head_id" />
-                        <field name="dep_head_email" />
-
+                            <field name="facilitator_id" required="1"/>
+                            <field name="facilitator_email" />
+                            <field name="dep_head_id" required="1"/>
+                            <field name="dep_head_email" />
+                        </group>
                         <field name="improvement_them" />
                         <field name="current_condition" />
                         <field name="improvement_suggestion" />
+                        <group string="CHOOSE THE IMPROVEMENT SUGGESTION OBJECTIVE">
+                            <group string="SQCDM Objective ">
+                                <field name="safety_healthy" />
+                                <field name="quallity" />
+                                <field name="cost_budget" />
+                                <field name="delivery" />
+                                <field name="morality" />
+                            </group>
+                            <group string="4M+EI Objective">
+                                <field name="man_people" />
+                                <field name="machine_equipment" />
+                                <field name="method_process" />
+                                <field name="material_parts" />
+                                <field name="environment" />
+                                <field name="information" />
+                            </group>
+                            <group string="5S Objective">
+                                <field name="sort" />
+                                <field name="set_in" />
+                                <field name="shine" />
+                                <field name="standardize" />
+                                <field name="sustain" />
+                            </group>
+                        </group>
                         
-                        <field name="safety_healthy" />
-                        <field name="quallity" />
-                        <field name="cost_budget" />
-                        <field name="delivery" />
-                        <field name="morality" />
 
-                        <field name="man_people" />
-                        <field name="machine_equipment" />
-                        <field name="method_process" />
-                        <field name="material_parts" />
-                        <field name="environment" />
-                        <field name="information" />
-
-                        <field name="sort" />
-                        <field name="set_in" />
-                        <field name="shine" />
-                        <field name="standardize" />
-                        <field name="sustain" />
+                        
 
                         <field name="improvement_scope" widget="radio" options="{'horizontal':true}"/>
 
@@ -51,7 +75,7 @@
                         <field name="deliverables" />
                         <field name="next_improvement_plan" />
 
-                        <field name="create_by" />
+                        <field name="create_id" />
                         <field name="create_date" />
                         
                     </group>
@@ -64,12 +88,12 @@
         <field name="model">improvement.suggestion</field>
         <field name="arch" type="xml">
             <tree string="">
+                <field name="doc_no" />
                 <field name="issue_date" />
                 <field name="employee_id" />
                 <field name="employee_email" />
                 <field name="bu_br_id" />
                 <field name="department_id" />
-                <field name="doc_no" />
                 <field name="improvement_them" />
             </tree>
         </field>
