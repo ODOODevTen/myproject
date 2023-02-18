@@ -6,6 +6,7 @@
     'depends': ['base','hr','mail'],
     'data': [
         'security/ir.model.access.csv',
+        'data/wk_sequence.xml',
         'views/wk_improvement_suggestion.xml',
       
     ],

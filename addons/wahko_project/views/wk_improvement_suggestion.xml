@@ -21,11 +21,12 @@
                             IMPROVEMENT SUGGESTION FORM
                         </h1>
                     </div>
-                    <!-- <group> -->
+                    <group>
+                        <field name="doc_no" readonly="1" force_save="1"/>
+                        <field name="issue_date" readonly="1" force_save="1"/>
+                    </group>
                     <group string="EMPLOYEE RELATED INFORMATION">
                         <group>
-                            <field name="doc_no" readonly="1" force_save="1"/>
-                            <field name="issue_date" readonly="1" force_save="1"/>
                             <field name="employee_id" required="1"/>
                             <field name="employee_email" />
                             <field name="bu_br_id" />
@@ -45,30 +46,30 @@
                         <field name="improvement_suggestion" />
                     </group>
                     
-                    <group string="CHOOSE THE IMPROVEMENT SUGGESTION OBJECTIVE">
-                        <group string="SQCDM Objective ">
-                            <field name="safety_healthy" />
-                            <field name="quallity" />
-                            <field name="cost_budget" />
-                            <field name="delivery" />
-                            <field name="morality" />
-                        </group>
-                        <group string="4M+EI Objective">
-                            <field name="man_people" />
-                            <field name="machine_equipment" />
-                            <field name="method_process" />
-                            <field name="material_parts" />
-                            <field name="environment" />
-                            <field name="information" />
-                        </group>
-                        <group string="5S Objective">
-                            <field name="sort" />
-                            <field name="set_in" />
-                            <field name="shine" />
-                            <field name="standardize" />
-                            <field name="sustain" />
-                        </group>  
+                    
+                    <group string="SQCDM Objective ">
+                        <field name="safety_healthy" />
+                        <field name="quallity" />
+                        <field name="cost_budget" />
+                        <field name="delivery" />
+                        <field name="morality" />
                     </group>
+                    <group string="4M+EI Objective">
+                        <field name="man_people" />
+                        <field name="machine_equipment" />
+                        <field name="method_process" />
+                        <field name="material_parts" />
+                        <field name="environment" />
+                        <field name="information" />
+                    </group>
+                    <group string="5S Objective">
+                        <field name="sort" />
+                        <field name="set_in" />
+                        <field name="shine" />
+                        <field name="standardize" />
+                        <field name="sustain" />
+                    </group>  
+                    
                     <group string="IMPROVEMENT SCOPE">
                         <field name="improvement_scope" widget="radio" options="{'horizontal':true}"/>
                     </group>
@@ -108,10 +109,13 @@
                 <field name="doc_no" />
                 <field name="issue_date" />
                 <field name="employee_id" />
-                <field name="employee_email" />
                 <field name="bu_br_id" />
                 <field name="department_id" />
-                <field name="improvement_them" />
+                <field name="state" 
+                decoration-success = "state =='close'"
+                decoration-info= "state=='add'"
+                decoration-warning="state=='draft'"
+                decoration-danger="state=='reject'" widget="badge"/>
             </tree>
         </field>
     </record>

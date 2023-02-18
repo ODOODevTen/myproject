@@ -3,20 +3,21 @@ from datetime import datetime
 class ImprovementSuggestion(models.Model):
     _name = 'improvement.suggestion'
     _description = 'Improvement Suggestion'
+    _rec_name = 'doc_no'
     
     issue_date = fields.Date(string='Issue Date',default=datetime.today())
     employee_id = fields.Many2one('hr.employee', string ='Proposed By')
-    employee_email = fields.Char(string='Proposed By Email')
+    employee_email = fields.Char(string='Proposed By Email', related='employee_id.work_email')
     designation = fields.Char(string='Designation')
     bu_br_id = fields.Char(string='Division/BU/Branch Name')
     department_id = fields.Char(string='Department Name')
-    doc_no = fields.Char(string='Doc No')
+    doc_no = fields.Char(string='Doc No', default='New')
 
     facilitator_id = fields.Many2one('hr.employee', string='Facilitated By')
-    facilitator_email = fields.Char(string='Facilitated By Email')
+    facilitator_email = fields.Char(string='Facilitated By Email',related='facilitator_id.work_email')
 
     dep_head_id = fields.Many2one('hr.employee', string='Department Head Name')
-    dep_head_email = fields.Char(string='Department Head Email')
+    dep_head_email = fields.Char(string='Department Head Email',related='dep_head_id.work_email')
 
     improvement_them = fields.Text(string='IMPROVEMENT THEME')
     current_condition = fields.Text(string='CURRENT CONDITION ANALYZE')
@@ -59,9 +60,9 @@ class ImprovementSuggestion(models.Model):
 
     state = fields.Selection([
         ('draft','Draft'),
-        ('add','Add'),
+        ('add','Added'),
         ('approve', 'Approved'),
-        ('close','Close'),
+        ('close','Closed'),
         ('reject','Rejected')
     ],default='draft', string='State')
 
@@ -74,10 +75,11 @@ class ImprovementSuggestion(models.Model):
     def action_reject(self):
         self.state = 'reject'
 
-    
     @api.model
     def create(self,vals):
-        vals['doc_no'] = self.env['ir.sequence'].next_by_code('improvement.suggestion')
-        return super(ImprovementSuggestion,self).create(vals)
+        if vals.get('doc_no','New') == 'New':
+            vals['doc_no'] = self.env['ir.sequence'].next_by_code('improvement.suggestion') or 'New'
+        result = super(ImprovementSuggestion,self).create(vals)
+        return result
 
 
