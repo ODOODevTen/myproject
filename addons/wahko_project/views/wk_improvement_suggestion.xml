@@ -29,6 +29,7 @@
                         <group>
                             <field name="employee_id" required="1"/>
                             <field name="employee_email" />
+                            <field name="designation" />
                             <field name="bu_br_id" />
                             <field name="department_id" />
                         </group>
@@ -46,29 +47,38 @@
                         <field name="improvement_suggestion" />
                     </group>
                     
-                    
-                    <group string="SQCDM Objective ">
-                        <field name="safety_healthy" />
-                        <field name="quallity" />
-                        <field name="cost_budget" />
-                        <field name="delivery" />
-                        <field name="morality" />
+                    <group string="CHOOSE THE IMPROVEMENT SUGGESTION OBJECTIVE (SQCDM,4M+EI and 5S)">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <group string="SQCDM Objective ">
+                                    <field name="safety_healthy" />
+                                    <field name="quallity" />
+                                    <field name="cost_budget" />
+                                    <field name="delivery" />
+                                    <field name="morality" />
+                                </group>
+                            </div>
+                            <div class="col-sm-4">
+                                <group string="4M+EI Objective">
+                                    <field name="man_people" />
+                                    <field name="machine_equipment" />
+                                    <field name="method_process" />
+                                    <field name="material_parts" />
+                                    <field name="environment" />
+                                    <field name="information" />
+                                </group>
+                            </div>
+                            <div class="col-sm-4">
+                                <group string="5S Objective">
+                                    <field name="sort" />
+                                    <field name="set_in" />
+                                    <field name="shine" />
+                                    <field name="standardize" />
+                                    <field name="sustain" />
+                                </group>  
+                            </div>
+                        </div>
                     </group>
-                    <group string="4M+EI Objective">
-                        <field name="man_people" />
-                        <field name="machine_equipment" />
-                        <field name="method_process" />
-                        <field name="material_parts" />
-                        <field name="environment" />
-                        <field name="information" />
-                    </group>
-                    <group string="5S Objective">
-                        <field name="sort" />
-                        <field name="set_in" />
-                        <field name="shine" />
-                        <field name="standardize" />
-                        <field name="sustain" />
-                    </group>  
                     
                     <group string="IMPROVEMENT SCOPE">
                         <field name="improvement_scope" widget="radio" options="{'horizontal':true}"/>
@@ -94,8 +104,7 @@
                         <field name="create_id" readonly="1" force_save="1"/>
                         <field name="create_date"  readonly="1" force_save="1"/>
                     </group>
-                           
-                    <!-- </group> -->
+
                 </sheet>
             </form>
         </field>
@@ -149,6 +158,7 @@
     <menuitem
         id="improvement_suggestion_menu"
         name="Improvement Suggestion" action="improvement_suggestion_action"
-        sequence="10"/>
+        sequence="10"
+        web_icon="wahko_project,static/description/icon.png"/>
     
 </odoo>

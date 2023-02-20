@@ -8,7 +8,7 @@ class ImprovementSuggestion(models.Model):
     issue_date = fields.Date(string='Issue Date',default=datetime.today())
     employee_id = fields.Many2one('hr.employee', string ='Proposed By')
     employee_email = fields.Char(string='Proposed By Email', related='employee_id.work_email')
-    designation = fields.Char(string='Designation')
+    designation = fields.Char(string='Designation',related='employee_id.job_title')
     bu_br_id = fields.Char(string='Division/BU/Branch Name')
     department_id = fields.Char(string='Department Name')
     doc_no = fields.Char(string='Doc No', default='New')

@@ -3,7 +3,10 @@
     'summary': "Improvement Suggestion",
     'author': "Wah KO",
     'description': "Improvement Suggestion",
-    'depends': ['base','hr','mail'],
+    'category': 'a3_a4',
+    'version': '1.0.0',
+    'license': 'LGPL-3',
+    'depends': ['base','hr','mail',],
     'data': [
         'security/ir.model.access.csv',
         'data/wk_sequence.xml',
