@@ -9,8 +9,8 @@ class ImprovementSuggestion(models.Model):
     employee_id = fields.Many2one('hr.employee', string ='Proposed By')
     employee_email = fields.Char(string='Proposed By Email', related='employee_id.work_email')
     designation = fields.Char(string='Designation',related='employee_id.job_title')
-    bu_br_id = fields.Char(string='Division/BU/Branch Name')
-    department_id = fields.Char(string='Department Name')
+    bu_br_id = fields.Char(string='Division/BU/Branch Name',related='employee_id.department_id.parent_id.name')
+    department_id = fields.Char(string='Department Name',related='employee_id.department_id.name')
     doc_no = fields.Char(string='Doc No', default='New')
 
     facilitator_id = fields.Many2one('hr.employee', string='Facilitated By')
